@@ -6,5 +6,5 @@
 
 credit::credit(int n) : num(n){}
 int credit::displayRoles(){
-    return num;
+       return num;
 }
