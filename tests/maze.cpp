@@ -7,23 +7,39 @@ objects which hold one of the possible maze constructions
 ---------------------
 */
 #include "maze.h"
+//------------MAZE------------
+//Maze::Maze(Mouse jerry, int *array){
 
-maze::maze(mouse jerry, int *array){
+//}
+
+bool Maze::forward(){
     
 }
-
-bool maze::forward(){
-    
-}
-bool maze::backwards(){
+bool Maze::backwards(){
 
 }
-bool maze::left(){
+int * Maze::left(){
 
 }
-bool maze::right(){
-
+int * Maze::right(){
+    this->jerry->location
 }
-void maze::set_start_location(int x, int y, int *array){
+//void maze::set_start_location(int x, int y, int *array){
     // Set up the maze from in the constructor
-}
+//}
+
+//------------MOUSE------------
+
+
+//------------LOCATION------------
+/// @brief The location class "structure" to represent locations in a grid
+/// @return the x axis locaton
+int location::x(){
+    return this->x_location;
+};
+
+/// @brief The location class "structure" to represent locations in a grid
+/// @return the y axis locaton
+int location::y(){
+    return this->y_location;
+};
