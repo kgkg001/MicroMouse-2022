@@ -16,7 +16,9 @@ int sensorArray[2][3] = {{0, trigPin1, echoPin1}, {0, trigPin2, echoPin2}};
 // Correctly Sets the Initial state of Sensor pinouts for all sensors
 void sensorArraySetup(){
   Serial.println("---------Sensor Setup---------");
-  for (int i = 0; i < 2; i++){
+  // Calculating number of sensors
+  int sensorArraySize = sizeof(sensorArray)/sizeof(sensorArray[0]);
+  for (int i = 0; i < sensorArraySize; i++){
     int trig = sensorArray[i][1];
     int echo = sensorArray[i][2];
     pinMode(trig, OUTPUT); // Sets the trigPin as an Output
@@ -29,7 +31,9 @@ void sensorArraySetup(){
 // Updates each sensor's distance in the sensor array
 void updateSensors(){
   Serial.println("---------Sensor Update---------");
-  for (int i = 0; i < 2; i++){
+  // Calculating number of sensors
+  int sensorArraySize = sizeof(sensorArray)/sizeof(sensorArray[0]);
+  for (int i = 0; i < sensorArraySize; i++){
     // Array traversal
       int duration, distance;
       int trig = sensorArray[i][1];
@@ -45,9 +49,7 @@ void updateSensors(){
 
     // Added historisa to cutdown on jitter
       distance = duration * 0.034 / 2;    
-      if (math.abs(distance - sensorArray[i][0]) > 5){
-        sensorArray[i][0] = distance;
-      }
+      sensorArray[i][0] = distance;
 
     // Printing calculations  
       Serial.print("Sensor: "); Serial.print(i);
