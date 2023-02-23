@@ -12,6 +12,15 @@ const int stepsPerRevolution = 200;
 Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);
 
 
+// ------------- //
+// Predetermined values
+// Motor shield pin left: 7
+// Motor shield pin right: 6
+
+int MOTORSHIELDRIGHT = 6;
+int MOTORSHIELDLEFT = 7; 
+
+
 void setup()
 {
   // set the speed at 60 rpm:
@@ -45,4 +54,19 @@ void loop()
   digitalWrite(7, HIGH);
   digitalWrite(6, LOw);
   myStepper.step(stepsPerRevolution);
+}
+
+// ---------------- //
+// Added functions for cleaning things up 
+
+// Make mouse go forward for specified amount of time (seconds)
+int forward(int time){
+    while (time > 0){
+        digitalWrite(MOTORSHIELDLEFT, HIGH);
+        digitalWrite(MOTORSHIELDRIGHT, HIGH);
+        // Delaying and updating the time
+        delayMicroseconds(1000);
+        time--;
+    }
+    return 0;
 }
