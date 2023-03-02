@@ -1,1 +1,29 @@
-"upload code here" 
+/*
+
+*/
+long leftDist; //distance from the left wall
+long rightDist; //distance from the right wall
+long ms; //time since we last checked the distance
+long diff; //the difference between the ditances
+long adjust; //determines how much to adjust by
+long totalErrors; //how many errors we see
+
+long Kp = 1500L;
+long Ki = 900L;
+
+void get_dist_data(){
+  //fills in the data from the sesors. Idk how we are getting these or what they 
+  //will be named. I also want to fill in a "ms" variable here that will count the
+  //amount of ms since the last time we got this data
+}
+
+void driveStraight() {
+  get_dist_data(&leftDist, &rightDist, &ms);
+  diff = (leftDist - rightDist);
+  totalErrors += diff;
+  adjust = (Kp*diff)/1000L + (Ki*totalErrors)/1000L;
+  
+    //correct drifting
+    left_Motor_Speed -= (adjust+1)/2;
+    right_Motor_Speed +=adjust/2;
+    
